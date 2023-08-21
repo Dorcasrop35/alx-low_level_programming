@@ -9,7 +9,7 @@
 int _atoi(char *s)
 {
 	int sign = 1;
-	long long int result = 0; // Use a larger data type
+	int result = 0;
 	int i = 0;
 
 	while (s[i])
@@ -25,13 +25,6 @@ int _atoi(char *s)
 		i++;
 	}
 
-	result *= sign;
-
-	// Handle overflow/underflow conditions
-	if (result > INT_MAX)
-		return INT_MAX;
-	else if (result < INT_MIN)
-		return INT_MIN;
-
-	return (int)result;
+	return (result * sign);
 }
+
