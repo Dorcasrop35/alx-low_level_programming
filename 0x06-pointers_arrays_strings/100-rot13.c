@@ -8,23 +8,21 @@
  */
 char *rot13(char *s)
 {
-	int i;
-	char *original = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char *encoded = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	int i, j;
+	char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char rot13_alphabet[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	for (i = 0; s[i]; i++)
 	{
-		if ((s[i] >= 'A' && s[i] <= 'Z') ||
-		    (s[i] >= 'a' && s[i] <= 'z'))
+		for (j = 0; alphabet[j]; j++)
 		{
-			s[i] = encoded[original - s[i]];
+			if (s[i] == alphabet[j])
+			{
+				s[i] = rot13_alphabet[j];
+				break;
+			}
 		}
 	}
+
 	return (s);
 }
-
-
-
-
-
-
